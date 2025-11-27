@@ -1,10 +1,12 @@
 import './App.css'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar.jsx'
+import ItemList from './components/ItemListContainer.jsx'
 
 function App() {
   return (
     <>
-    <Navbar />
+    <Navbar/>
+    <ItemList name="Welcome to Buy & Sell"/>
     </>
   )
 }
