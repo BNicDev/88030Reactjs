@@ -11,13 +11,14 @@ const ItemList = ({name}) =>{
     useEffect(()=>{
         GetApi()
         .then((datos)=>setProducts(datos))
+        .catch(error => alert(error))
     },[])
 
 
     return(
-        <div className="max-w-4xl mx-auto text-center p-4 mt-24">
-             <h1 className="text-4xl font-bold">{name}</h1>
-             <div className="item-container">
+        <div className="max-w-6xl mx-auto text-center p-4 mt-8">
+             <h1 className="text-5xl font-extrabold text-white-800 mb-12 mt-12">{name}</h1>
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
                 {products.map((data)=>(<ListCard key={data.id} productos={data}/>))}
              </div>
         </div>
