@@ -1,4 +1,6 @@
 import cartWidget from "./CartWidget"
+import showByCategory from "./categoryShow"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
 
@@ -9,22 +11,19 @@ const Navbar = () => {
             Buy & Sell
         </li>
         <li>
-            All
+          <Link to={'/'} className="!text-white">All</Link>
         </li>
         <li>
-            Clothes
+           <Link to={`/products/category/electronics`} className="!text-white">Electronics</Link>
         </li>
         <li>
-            Electronics
+            <Link to={`/products/category/jewelery`} className="!text-white">Jewelery</Link>
         </li>
         <li>
-            Furnitures
+            <Link to={`/products/category/men's clothing`} className="!text-white">Men's clothing</Link>
         </li>
         <li>
-            Toys
-        </li>
-        <li>
-            Others
+          <Link to={`/products/category/women's clothing`} className="!text-white">Women's clothing</Link>
         </li>
       </ul>
       {cartWidget()}

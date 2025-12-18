@@ -1,16 +1,13 @@
-const GetApi =()=>{
-    return fetch('https://fakestoreapi.com/products'
-)
-        .then((response)=>{
-            if(!response.ok){
-                throw new Error(`error en la peticion: ${response.status} ${response.statusText}`)
-            }
-            return response.json()
-        })
-        .catch((error)=>{
-            console.log('error de api ', error.message)
-            throw error
-        })
+export async function GetApi(){
+    const response = await fetch('https://fakestoreapi.com/products');
+    const products = await response.json();
+    return products;
 }
 
-export default GetApi
+
+
+export async function GetSelected(id){
+    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const SelectedProduct  = await response.json();
+    return SelectedProduct;
+}
