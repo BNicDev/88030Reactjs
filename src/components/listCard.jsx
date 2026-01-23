@@ -10,8 +10,8 @@ const ListCard = ({ productos }) => {
                 )}
             
             <div className="p-5 text-left">
-                <p className="text-xl font-bold text-white-800 truncate mb-2">{productos.title}</p>
-                <p className="text-3xl font-extrabold text-white-600 mb-4">${productos.price}</p>
+                <p className="text-l font-bold text-white truncate mb-2">{productos.title}</p>
+                <p className="text-xl font-extrabold text-white mb-4">${productos.price}</p>
                 <button className="w-full text-white bg-blue-600 hover:bg-blue-700 font-semibold py-2 rounded-lg transition duration-150 ease-in-out shadow-md"><Link to={`/products/${productos.id}`} className="!text-white hover:text-gray-300 transition-colors">see more</Link></button>
             </div>
         </div>
