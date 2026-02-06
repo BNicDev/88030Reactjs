@@ -1,27 +1,38 @@
 import { useState, useEffect } from "react";
-import ListCard from "./listCard";
 import {GetApi} from "./services/api";
+import ItemList from "./itemList";
 
 
 
-const ItemList = ({name}) =>{
+const ItemListContainer = ({name}) =>{
 
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true)
     useEffect(()=>{
+        setLoading(true)
         GetApi()
-        .then((datos)=>setProducts(datos))
+        .then((datos)=>{
+            setProducts(datos);
+             setLoading(false)
+            })
+            .catch(err => {
+                console.error(`error 1 ${err}`);
+                setLoading(false)
+            })
     },[])
 
-    return(
-        <div className="max-w-6xl mx-auto text-center p-4 mt-8">
-             <h1 className="text-5xl font-extrabold text-blue-800 mb-12 mt-12">{name}</h1>
-             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-                {products.map((data)=>(<ListCard key={data.id} productos={data}/>))}
-             </div>
+    return (
+        <div className="max-w-7xl mx-auto text-center p-4 mt-16 min-h-screen">
+            <h1 className="text-4xl font-extrabold text-blue-600 mb-12 capitalize">{name}</h1>
+            
+            {loading ? (
+                <div className="text-white text-xl">Cargando catálogo...</div>
+            ) : (
+                <ItemList products={products} />
+            )}
         </div>
-
-    )
+    );
 
 }
 
-export default ItemList;
+export default ItemListContainer;
